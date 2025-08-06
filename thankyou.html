@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Terima Kasih - PT Sinergi Prima Tangguh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ucapan terima kasih atas kehadiran dan partisipasi Anda">
+  <link rel="icon" type="image/png" href="logopt.png" />
+  <style>
+    :root {
+      --primary: #0072bc;
+      --primary-hover: #005a96;
+      --text: #34495e;
+      --heading: #2c3e50;
+      --background: #f4f6f8;
+      --accent: #fbbf24;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      text-align: center;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .logo-header {
+      max-width: min(350px, 80%);
+      height: auto;
+      margin: 0 auto 2rem;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+    
+    .card {
+      background: linear-gradient(to bottom, #ffffff 0%, #f9fbfd 100%);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 60, 150, 0.15);
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 114, 188, 0.1);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, #4da1ff 100%);
+    }
+    
+    .thank-title {
+      font-size: clamp(1.8rem, 5.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 1.2rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      background: linear-gradient(90deg, #0072bc 0%, #00a8ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .thank-message {
+      font-size: clamp(1.05rem, 3.2vw, 1.15rem);
+      color: var(--text);
+      margin: 0 auto;
+      max-width: 90%;
+    }
+    
+    .thank-message p {
+      margin-bottom: 1rem;
+    }
+    
+    .btn-home {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border: none;
+      margin-top: 1.8rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 114, 188, 0.3);
+      font-size: 1.05rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn-home::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: 0.5s;
+      z-index: -1;
+    }
+    
+    .btn-home:hover::before {
+      left: 100%;
+    }
+    
+    .btn-home:hover, .btn-home:focus {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 114, 188, 0.4);
+    }
+    
+    .btn-home:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 114, 188, 0.3);
+    }
+    
+    .wave-hand {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.8rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hand-img {
+      width: 100%;
+      height: auto;
+      animation: wave 2.4s ease-in-out infinite;
+      transform-origin: 75% 75%;
+      will-change: transform;
+      filter: drop-shadow(0 4px 6px rgba(251, 191, 36, 0.4));
+    }
+    
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      15% { transform: rotate(12deg) scale(1.05); }
+      30% { transform: rotate(-10deg) scale(1.03); }
+      45% { transform: rotate(14deg) scale(1.06); }
+      60% { transform: rotate(-8deg) scale(1.02); }
+      75% { transform: rotate(8deg) scale(1.04); }
+    }
+    
+    .confetti {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 0;
+      left: 50%;
+      opacity: 0;
+      animation: confetti-fall 5s ease-in infinite;
+    }
+    
+    .confetti:nth-child(1) { 
+      left: 10%; 
+      animation-delay: 0s;
+      background: #FF6B6B;
+    }
+    .confetti:nth-child(2) { 
+      left: 20%; 
+      animation-delay: 1s;
+      background: #4ECDC4;
+    }
+    .confetti:nth-child(3) { 
+      left: 30%; 
+      animation-delay: 0.5s;
+      background: #FFD166;
+    }
+    .confetti:nth-child(4) { 
+      left: 70%; 
+      animation-delay: 2s;
+      background: #6A0572;
+    }
+    .confetti:nth-child(5) { 
+      left: 80%; 
+      animation-delay: 1.5s;
+      background: #1A936F;
+    }
+    .confetti:nth-child(6) { 
+      left: 90%; 
+      animation-delay: 0.8s;
+      background: #FF6B6B;
+    }
+    
+    @keyframes confetti-fall {
+      0% { 
+        top: -20px; 
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+      100% { 
+        top: 100%; 
+        opacity: 0;
+        transform: translateY(500px) rotate(720deg);
+      }
+    }
+    
+    .footer {
+      margin-top: 2.5rem;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 576px) {
+      body {
+        padding: 1.2rem;
+      }
+      
+      .card {
+        padding: 1.8rem 1.5rem;
+      }
+      
+      .wave-hand {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1.2rem;
+      }
+      
+      .thank-message {
+        max-width: 95%;
+      }
+      
+      .btn-home {
+        padding: 0.7rem 1.8rem;
+        font-size: 1rem;
+      }
+    }
+    
+    @media (prefers-reduced-motion) {
+      .hand-img {
+        animation: none;
+      }
+      
+      .confetti {
+        animation: none;
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Logo Perusahaan -->
+    <img src="pt kontor.jpg" alt="Logo PT Sinergi Prima Tangguh" class="logo-header" width="350" height="100">
+
+    <!-- Kartu Ucapan Terima Kasih -->
+    <div class="card" role="region" aria-labelledby="thankYouHeading">
+      <!-- Confetti animation -->
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      
+      <!-- PNG Wave Hand -->
+      <div class="wave-hand" aria-hidden="true">
+        <img src="hand22.png" alt="Tangan melambai" class="hand-img" style="background: transparent;" />
+      </div>
+
+      <h1 class="thank-title" id="thankYouHeading">Terima Kasih</h1>
+      <div class="thank-message">
+        <p>Data kehadiran Anda telah berhasil disimpan.</p>
+        <p>PT Sinergi Prima Tangguh mengucapkan terima kasih atas kunjungan dan partisipasi Anda.</p>
+        <p>Komitmen dan kerjasama Anda sangat berarti bagi kelancaran aktivitas operasional kami.</p>
+        <p>Semoga hubungan profesional ini terus terjalin dengan baik ke depannya.</p>
+      </div>
+    </div>
+    
+    <div class="footer">
+      &copy; 2025 PT Sinergi Prima Tangguh. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    // Simple animation effect for the button
+    document.querySelector('.btn-home').addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-3px)';
+    });
+    
+    document.querySelector('.btn-home').addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Buku Tamu - PT. Sinergi Prima Tangguh</title>
+  <link rel="icon" type="image/png" href="logopt.png" />
+  <!-- Inlined Bootstrap CSS for critical styles -->
+  <style>
+    :root {
+      --primary: #0072bc;
+      --secondary: #f15a24;
+      --light-bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text-dark: #333333;
+      --text-light: #777777;
+      --border: #ced4da;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #e6f0ff 0%, #f0f7ff 100%);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--text-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Logo & Brand Header */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      text-align: center;
+      gap: 15px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .logo {
+      width: 80px;
+      height: auto;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+    
+    .brand-title {
+      font-weight: 700;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    
+    .subtitle {
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
+      color: var(--secondary);
+      font-weight: 500;
+    }
+    
+    /* Card Styling */
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 60, 150, 0.15);
+      border: none;
+    }
+    
+    .card-header {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 18px;
+      text-align: center;
+      font-weight: 600;
+      font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+      letter-spacing: 0.5px;
+      border: none;
+    }
+    
+    .card-body {
+      padding: 30px;
+    }
+    
+    /* Form Elements */
+    .form-label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #444;
+      font-size: 0.95rem;
+    }
+    
+    .form-control {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 114, 188, 0.2);
+      outline: none;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    /* Signature Area */
+    .signature-container {
+      border-radius: 8px;
+      background: #f8f9fa;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid var(--border);
+    }
+    
+    .signature-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .signature-pad {
+      width: 100%;
+      height: 150px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: crosshair;
+      touch-action: none;
+    }
+    
+    .signature-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .btn {
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      flex: 1;
+    }
+    
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #005a96;
+    }
+    
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      background: #bd2130;
+    }
+    
+    /* Submit Button */
+    .submit-btn {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 14px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 114, 188, 0.3);
+      width: 100%;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 114, 188, 0.4);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(1px);
+    }
+    
+    /* File Upload */
+    .file-upload {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    .file-upload-label {
+      display: block;
+      padding: 12px 15px;
+      background: #f8f9fa;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+    
+    .file-upload-label:hover {
+      background: #e9ecef;
+      border-color: var(--primary);
+    }
+    
+    .file-upload-label i {
+      margin-right: 8px;
+      color: var(--primary);
+    }
+    
+    .file-upload-input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .card-body {
+        padding: 20px;
+      }
+      
+      .brand-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .signature-actions {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      .container {
+        padding: 10px;
+      }
+      
+      .card-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Brand Header -->
+    <div class="brand-header">
+      <img src="logopt.png" alt="Logo Sinergi Prima Tangguh" class="logo">
+      <div>
+        <h1 class="brand-title">SINERGI PRIMA TANGGUH</h1>
+        <p class="subtitle">Quality Inspection and Man Power Services</p>
+      </div>
+    </div>
+
+    <!-- Guest Book Form -->
+    <div class="card shadow">
+      <div class="card-header">
+        <h2>Form Buku Tamu</h2>
+      </div>
+      <div class="card-body">
+        <form id="guestForm" action="submit.php" method="POST" enctype="multipart/form-data">
+          <!-- Date -->
+          <div class="form-group">
+            <label for="tanggal" class="form-label">Tanggal</label>
+            <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+          </div>
+          
+          <!-- Name -->
+          <div class="form-group">
+            <label for="nama" class="form-label">Nama</label>
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+          </div>
+          
+          <!-- Institution -->
+          <div class="form-group">
+            <label for="instansi" class="form-label">Instansi Asal</label>
+            <input type="text" class="form-control" id="instansi" name="instansi" placeholder="Nama instansi/perusahaan" required>
+          </div>
+          
+          <!-- Visit Purpose -->
+          <div class="form-group">
+            <label for="tujuan" class="form-label">Tujuan Kunjungan</label>
+            <input type="text" class="form-control" id="tujuan" name="tujuan" placeholder="Tujuan kunjungan Anda" required>
+          </div>
+          
+          <!-- Signature Canvas -->
+          <div class="form-group">
+            <div class="signature-container">
+              <span class="signature-label">Tanda Tangan</span>
+              <canvas id="signature" class="signature-pad"></canvas>
+              <input type="hidden" name="signature" id="signature-data">
+              
+              <div class="signature-actions">
+                <button type="button" class="btn btn-secondary" id="clear-signature">Hapus</button>
+                <button type="button" class="btn btn-primary" id="save-signature">Simpan</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Signature Upload -->
+          <div class="form-group">
+            <label class="form-label">Upload Tanda Tangan</label>
+            <div class="file-upload">
+              <label for="TTD" class="file-upload-label">
+                <i>📁</i> Pilih file tanda tangan (format: JPG, PNG, PDF)
+              </label>
+              <input type="file" class="form-control file-upload-input" id="TTD" name="TTD" accept="image/*,.pdf" required>
+            </div>
+          </div>
+          
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">Kirim Formulir</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="footer">
+      &copy; 2023 PT Sinergi Prima Tangguh. Hak Cipta Dilindungi.
+    </div>
+  </div>
+
+  <script>
+    // Set today's date as default
+    document.addEventListener('DOMContentLoaded', function() {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('tanggal').value = today;
+    });
+    
+    // Enhanced Signature Pad
+    const canvas = document.getElementById('signature');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    let points = [];
+    
+    // Set canvas size
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    
+    // Set line drawing style
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = '#000';
+    
+    // Drawing functions
+    function startDrawing(e) {
+      drawing = true;
+      points = [];
+      draw(e);
+    }
+    
+    function draw(e) {
+      if (!drawing) return;
+      
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX || e.touches[0].clientX) - rect.left;
+      const y = (e.clientY || e.touches[0].clientY) - rect.top;
+      
+      points.push({x, y});
+      
+      if (points.length < 3) return;
+      
+      // Draw smooth curve
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      
+      for (let i = 1; i < points.length - 2; i++) {
+        const xc = (points[i].x + points[i + 1].x) / 2;
+        const yc = (points[i].y + points[i + 1].y) / 2;
+        ctx.quadraticCurveTo(points[i].x, points[i].y, xc, yc);
+      }
+      
+      ctx.quadraticCurveTo(
+        points[points.length - 2].x, 
+        points[points.length - 2].y,
+        points[points.length - 1].x,
+        points[points.length - 1].y
+      );
+      
+      ctx.stroke();
+    }
+    
+    function stopDrawing() {
+      if (!drawing) return;
+      drawing = false;
+    }
+    
+    // Event listeners for mouse
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+    
+    // Event listeners for touch
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      startDrawing(e);
+    });
+    canvas.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      draw(e);
+    });
+    canvas.addEventListener('touchend', stopDrawing);
+    
+    // Clear signature
+    document.getElementById('clear-signature').addEventListener('click', () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+    
+    // Clear all fields
+    document.getElementById('clear-all').addEventListener('click', () => {
+      if (confirm('Apakah Anda yakin ingin menghapus semua data?')) {
+        document.getElementById('guestForm').reset();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById('tanggal').value = new Date().toISOString().split('T')[0];
+      }
+    });
+    
+    // Save signature
+    document.getElementById('save-signature').addEventListener('click', () => {
+      if (!canvas.toDataURL().includes('base64')) {
+        alert('Silakan buat tanda tangan terlebih dahulu');
+        return;
+      }
+      document.getElementById('signature-data').value = canvas.toDataURL();
+      alert('Tanda tangan berhasil disimpan!');
+    });
+    
+    // Form validation
+    document.getElementById('guestForm').addEventListener('submit', function(e) {
+      // Ensure signature is saved
+      if (!document.getElementById('signature-data').value) {
+        e.preventDefault();
+        alert('Silakan simpan tanda tangan Anda sebelum mengirim');
+        return false;
+      }
+      
+      // Check if signature is blank
+      const blankCanvas = document.createElement('canvas');
+      blankCanvas.width = canvas.width;
+      blankCanvas.height = canvas.height;
+      
+      if (canvas.toDataURL() === blankCanvas.toDataURL()) {
+        e.preventDefault();
+        alert('Tanda tangan masih kosong, silakan tambahkan tanda tangan');
+        return false;
+      }
+      
+      return true;
+    });
+  </script>
+</body>
+</html>
